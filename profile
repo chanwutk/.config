@@ -60,7 +60,8 @@ export TERM="xterm-256color"
 
 # Local Binaries --------------------------------------------------------------
 export PATH=$HOME/.local/bin:$PATH
-if [ -d "/usr/local/sbin" ] then
+if [ -d "/usr/local/sbin" ]
+then
   export PATH="/usr/local/sbin:$PATH"
 fi
 
