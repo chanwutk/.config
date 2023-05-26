@@ -1,0 +1,5 @@
+*
+!.gitignore
+!npm
+!python
+!tmux
