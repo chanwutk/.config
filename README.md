@@ -3,6 +3,8 @@
 ## Setup
 ```bash
 git clone --recurse-submodules     git@github.com:chanwutk/config.git $HOME/.config
+```
+```bash
 # OR
 git clone --recurse-submodules https://github.com/chanwutk/config.git $HOME/.config
 ```
