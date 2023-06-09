@@ -45,6 +45,9 @@ export SHELL_SESSIONS_DISABLE=1
 export AUTOENV_AUTH_FILE="$XDG_STATE_HOME"/autoenv/authorized_list
 export AUTOENV_NOTAUTH_FILE="$XDG_STATE_HOME"/autoenv/not_authorized_list
 export AUTOENV_ENABLE_LEAVE="t"
+# terminfo
+export TERMINFO="$XDG_DATA_HOME"/terminfo                                                                         
+export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 
 # wget
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
@@ -77,7 +80,7 @@ export LDFLAGS=-L${LIB_PATH}/lib
 
 
 # Locale ----------------------------------------------------------------------
-export LANG="en_US.UTF-8"
-export LANGUAGE="en_US:en"
-export LC_ALL="en_US.UTF-8"
+# export LANG="en_US.UTF-8"
+# export LANGUAGE="en_US:en"
+# export LC_ALL="en_US.UTF-8"
 

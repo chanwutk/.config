@@ -1,4 +1,4 @@
-# A .config folder for UNIX Systems
+# A .config folder for Linux / MacOS
 
 ## Setup
 ```bash

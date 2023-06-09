@@ -1,5 +1,6 @@
 # Aliases ---------------------------------------------------------------------
 alias vim="nvim"
+alias lg='exa -laF --git'
 
 
 # HSTR configuration ----------------------------------------------------------
@@ -26,7 +27,27 @@ eval "`fnm env`"
 # Git Status ------------------------------------------------------------------
 source $XDG_DATA_HOME/gitstatus/gitstatus.prompt.sh
 
+function gitstatus_prompt_update_ () {
+  gitstatus_prompt_update
+  if (( VCS_STATUS_NUM_STAGED || VCS_STATUS_NUM_UNSTAGED || VCS_STATUS_NUM_UNTRACKED )); then
+    local change=$'\001\e[38;5;001m\002'
+    GITSTATUS_PROMPT="${GITSTATUS_PROMPT} ${change}with changes"
+  fi
+}
+
+# On every prompt, fetch git status and set GITSTATUS_PROMPT.
+PROMPT_COMMAND=gitstatus_prompt_update_
+
+# Example:
+#
+#   host ~/projects/skynet master ⇡42 with changes
+#   > █
+PS1='\[\033[01;33m\]\h\[\033[00m\] '              # olive host
+PS1+='\w\[\033[00m\]'                             # white current working directory
+PS1+='${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT}'    # git status (requires promptvars option)
+PS1+='\n\[\033[01;$((35+!$?))m\]>\[\033[00m\] '   # blue/pink (success/error) >
+PS1+='\[\e]0;\u@\h: \w\a\]'                       # terminal title: user@host: dir
+
 
 # Autoenv ---------------------------------------------------------------------
 source $XDG_DATA_HOME/autoenv/activate.sh
-
