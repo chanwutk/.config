@@ -37,6 +37,9 @@ export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
 # python
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+# rust
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
 # parallel
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 # macos shell
@@ -63,8 +66,7 @@ export TERM="xterm-256color"
 
 # Local Binaries --------------------------------------------------------------
 export PATH=$HOME/.local/bin:$PATH
-if [ -d "/usr/local/sbin" ]
-then
+if [ -d "/usr/local/sbin" ]; then
   export PATH="/usr/local/sbin:$PATH"
 fi
 
