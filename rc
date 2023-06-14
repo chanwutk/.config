@@ -29,17 +29,6 @@ eval "`fnm env`"
 # Git Status ------------------------------------------------------------------
 source $XDG_DATA_HOME/gitstatus/gitstatus.prompt.sh
 
-function gitstatus_prompt_update_ () {
-  gitstatus_prompt_update
-  if (( VCS_STATUS_NUM_STAGED || VCS_STATUS_NUM_UNSTAGED || VCS_STATUS_NUM_UNTRACKED )); then
-    local change=$'\001\e[38;5;001m\002'
-    GITSTATUS_PROMPT="${GITSTATUS_PROMPT} ${change}with changes"
-  fi
-}
-
-# On every prompt, fetch git status and set GITSTATUS_PROMPT.
-PROMPT_COMMAND=gitstatus_prompt_update_
-
 # Example:
 #
 #   host ~/projects/skynet master ⇡42 with changes
