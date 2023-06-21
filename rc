@@ -26,18 +26,18 @@ export HSTR_CONFIG=$HSTR_CONFIG,hide-basic-help
 eval "`fnm env`"
 
 
-# Git Status ------------------------------------------------------------------
-source $XDG_DATA_HOME/gitstatus/gitstatus.prompt.sh
+# # Git Status ------------------------------------------------------------------
+# source $XDG_DATA_HOME/gitstatus/gitstatus.prompt.sh
 
-# Example:
-#
-#   host ~/projects/skynet master ⇡42 with changes
-#   > █
-PS1='\[\033[01;33m\]\h\[\033[00m\] '              # olive host
-PS1+='\w\[\033[00m\]'                             # white current working directory
-PS1+='${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT}'    # git status (requires promptvars option)
-PS1+='\n\[\033[01;$((35+!$?))m\]>\[\033[00m\] '   # blue/pink (success/error) >
-PS1+='\[\e]0;\u@\h: \w\a\]'                       # terminal title: user@host: dir
+# # Example:
+# #
+# #   host ~/projects/skynet master ⇡42 with changes
+# #   > █
+# PS1='\[\033[01;33m\]\h\[\033[00m\] '              # olive host
+# PS1+='\w\[\033[00m\]'                             # white current working directory
+# PS1+='${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT}'    # git status (requires promptvars option)
+# PS1+='\n\[\033[01;$((35+!$?))m\]>\[\033[00m\] '   # blue/pink (success/error) >
+# PS1+='\[\e]0;\u@\h: \w\a\]'                       # terminal title: user@host: dir
 
 
 # Autoenv ---------------------------------------------------------------------
