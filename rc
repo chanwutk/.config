@@ -1,5 +1,6 @@
 # Aliases ---------------------------------------------------------------------
 alias lg='exa -laF --git'
+alias sl='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
 if command -v nvim &> /dev/null; then
   alias vim=nvim
 fi
@@ -33,11 +34,11 @@ eval "`fnm env`"
 # #
 # #   host ~/projects/skynet master ⇡42 with changes
 # #   > █
-# PS1='\[\033[01;33m\]\h\[\033[00m\] '              # olive host
-# PS1+='\w\[\033[00m\]'                             # white current working directory
+PS1='\[\033[01;33m\]\h\[\033[00m\] '              # olive host
+PS1+='\w\[\033[00m\]'                             # white current working directory
 # PS1+='${GITSTATUS_PROMPT:+ $GITSTATUS_PROMPT}'    # git status (requires promptvars option)
-# PS1+='\n\[\033[01;$((35+!$?))m\]>\[\033[00m\] '   # blue/pink (success/error) >
-# PS1+='\[\e]0;\u@\h: \w\a\]'                       # terminal title: user@host: dir
+PS1+='\n\[\033[01;$((35+!$?))m\]>\[\033[00m\] '   # blue/pink (success/error) >
+PS1+='\[\e]0;\u@\h: \w\a\]'                       # terminal title: user@host: dir
 
 
 # Autoenv ---------------------------------------------------------------------
