@@ -27,20 +27,20 @@ function __prompt_command {
     ERRMSG=" $RET"
   fi
   # if which git &>/dev/null; then
-    BRANCH=$(git branch 2>/dev/null | grep \* |  cut -d " " -f 2)
+    BRANCH=" $(git branch 2>/dev/null | grep \* |  cut -d ' ' -f 2)"
   # else
   #   BRANCH="(git not installed)"
   # fi
   PS1="${LIGHT_OLIVE}\h "
-  PS1+="${RESTORE}\w "
+  PS1+="${RESTORE}\w"
   PS1+="${CYAN}${BRANCH}"
   # PS1+="${RED}${ERRMSG}"
   if [ ! -z "$CONDA_DEFAULT_ENV" ]; then
     PS1+=" ${PURPLE}($CONDA_DEFAULT_ENV)"
   fi
   PS1+="\n"
-  PS1+="\[\033[01;$((35+!$?))m\]> "
-  PS1+="$RESTORE"
+  PS1+="\[\033[01;$((35+!$?))m\]>"
+  PS1+="${RESTORE} "
   PS1+="\[\e]0;\u@\h: \w\a\]"
 }
 PROMPT_DIRTRIM=3
