@@ -2,11 +2,11 @@
 
 ## Setup
 ```bash
-git clone --recurse-submodules     git@github.com:chanwutk/config.git $HOME/.config
+git clone --recurse-submodules --depth 1     git@github.com:chanwutk/config.git $HOME/.config
 ```
 ```bash
 # OR
-git clone --recurse-submodules https://github.com/chanwutk/config.git $HOME/.config
+git clone --recurse-submodules --depth 1 https://github.com/chanwutk/config.git $HOME/.config
 ```
 
 ### Setup rc and profile
