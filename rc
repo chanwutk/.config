@@ -73,7 +73,9 @@ export HSTR_CONFIG=$HSTR_CONFIG,hide-basic-help
 
 
 # fnm -------------------------------------------------------------------------
-eval "`fnm env`"
+if which fnm &>/dev/null; then
+  eval "`fnm env`"
+fi
 
 
 # Autoenv ---------------------------------------------------------------------
