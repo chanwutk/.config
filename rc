@@ -79,4 +79,6 @@ fi
 
 
 # Autoenv ---------------------------------------------------------------------
-source $XDG_DATA_HOME/autoenv/activate.sh
+if [ -d $XDG_DATA_HOME/autoenv ]; then
+  source $XDG_DATA_HOME/autoenv/activate.sh
+fi
