@@ -21,16 +21,19 @@ function __prompt_command {
   #   SCHROOT_CHROOT_NAME=" "
   # fi
   BRANCH=""
-  ERRMSG=""
-  RET=$?
-  if [[ $RET != 0 ]]; then
-    ERRMSG=" $RET"
-  fi
+  # ERRMSG=""
+  # RET=$?
+  # if [[ $RET != 0 ]]; then
+  #   ERRMSG=" $RET"
+  # fi
   # if which git &>/dev/null; then
-    BRANCH=" $(git branch 2>/dev/null | grep \* |  cut -d ' ' -f 2)"
+    BRANCH="$(git branch 2>/dev/null | grep \* |  cut -d ' ' -f 2)"
   # else
   #   BRANCH="(git not installed)"
   # fi
+  if [ -n "$BRANCH" ]; then
+    BRANCH=" $BRANCH"
+  fi
   PS1="${LIGHT_OLIVE}\h "
   PS1+="${RESTORE}\w"
   PS1+="${CYAN}${BRANCH}"
@@ -48,7 +51,11 @@ export PROMPT_COMMAND=__prompt_command
 
 
 # Aliases ---------------------------------------------------------------------
+if command -v exa &> /dev/null; then
+  alias ls=exa
+fi
 alias lg='exa -laF --git'
+alias ll='ls -lahFG'
 alias sl='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
 if command -v nvim &> /dev/null; then
   alias vim=nvim
