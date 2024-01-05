@@ -31,14 +31,13 @@ function __prompt_command {
   # else
   #   BRANCH="(git not installed)"
   # fi
-  if [ -n "$BRANCH" ]; then
-    BRANCH=" $BRANCH"
-  fi
   PS1="${LIGHT_OLIVE}\h "
   PS1+="${RESTORE}\w"
-  PS1+="${CYAN}${BRANCH}"
+  if [ -n "$BRANCH" ]; then
+    PS1+=" ${CYAN}${BRANCH}"
+  fi
   # PS1+="${RED}${ERRMSG}"
-  if [ ! -z "$CONDA_DEFAULT_ENV" ]; then
+  if [ -n "$CONDA_DEFAULT_ENV" ]; then
     PS1+=" ${PURPLE}($CONDA_DEFAULT_ENV)"
   fi
   PS1+="\n"
