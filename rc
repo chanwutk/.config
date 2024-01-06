@@ -60,7 +60,7 @@ if command -v  &> /dev/null; then
   alias cat='bat -p'
 fi
 
-alias ll='ls -lahFG'
+alias ll='ls -lahF'
 alias sl='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
 if command -v nvim &> /dev/null; then
   alias vim=nvim
