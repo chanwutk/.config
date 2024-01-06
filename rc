@@ -52,8 +52,14 @@ export PROMPT_COMMAND=__prompt_command
 # Aliases ---------------------------------------------------------------------
 if command -v exa &> /dev/null; then
   alias ls=exa
+  alias lg='exa -laF --git'
+  alias tree='exa --tree --long'
 fi
-alias lg='exa -laF --git'
+
+if command -v  &> /dev/null; then
+  alias cat='bat -p'
+fi
+
 alias ll='ls -lahFG'
 alias sl='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
 if command -v nvim &> /dev/null; then
