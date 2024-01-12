@@ -56,7 +56,7 @@ if command -v exa &> /dev/null; then
   alias tree='exa --tree --long'
 fi
 
-if command -v  &> /dev/null; then
+if command -v bat &> /dev/null; then
   alias cat='bat -p'
 fi
 
