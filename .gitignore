@@ -4,5 +4,7 @@
 !npm
 !python
 !tmux
+!tmux/**
+!tmux/**/*
 !profile
 !rc
