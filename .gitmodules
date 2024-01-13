@@ -1,4 +1,0 @@
-[submodule "tmux"]
-	path = tmux
-	url = git@github.com:chanwutk/tmux.git
-	branch = master
