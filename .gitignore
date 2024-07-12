@@ -3,6 +3,9 @@
 !.gitmodules
 !npm
 !python
+!tmux
 !tmux/tmux.conf
+!tmux/plugins
+!tmux/plugins/tpm
 !profile
 !rc
