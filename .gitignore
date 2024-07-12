@@ -7,5 +7,7 @@
 !tmux/tmux.conf
 !tmux/plugins
 !tmux/plugins/tpm
+!lvim
+!lvim/config.lua
 !profile
 !rc
