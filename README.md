@@ -13,9 +13,9 @@ git clone --recurse-submodules --depth 1 https://github.com/chanwutk/.config.git
 ```bash
 # In .bashrc or .zshrc
 # NOTE: after conda setup (if available)
-source $HOME/.config/rc
+source $HOME/.config/rc.sh
 
 # In .profile, .bash_profile, or .zprofile
 # NOTE: before sourcing rc
-source $HOME/.config/profile
+source $HOME/.config/profile.sh
 ```
