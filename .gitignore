@@ -9,3 +9,5 @@
 !tmux/plugins/tpm
 !profile.sh
 !rc.sh
+!zsh/.zshrc
+!zsh/.zprofile
