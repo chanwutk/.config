@@ -12,3 +12,7 @@
 !zsh
 !zsh/.zshrc
 !zsh/.zprofile
+!zsh/plugins
+!zsh/plugins/zsh-syntax-highlighting
+!zsh/plugins/zsh-autosuggestions
+!zsh/plugins/gitstatus
