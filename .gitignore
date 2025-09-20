@@ -17,4 +17,5 @@
 !zsh/plugins/zsh-autosuggestions
 !zsh/plugins/gitstatus
 !chanwutk.github.io
-!displayplacer/*
+!displayplacer/
+!displayplacer/*.sh
