@@ -56,6 +56,10 @@ if command -v nvim &> /dev/null; then
   alias vim=nvim
 fi
 
+if command -v fzf &> /dev/null; then
+  eval "$(fzf --bash)"
+fi
+
 # fzf -------------------------------------------------------------------------
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
 

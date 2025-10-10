@@ -1,1 +1,1 @@
-displayplacer "id:2741FCF0-BF41-455C-32F9-2523FBC2D866 res:1536x960 hz:59 color_depth:8 enabled:true scaling:on origin:(0,0) degree:0" "id:4FF3CEF9-0FB7-51ED-3FE4-91CC9A79F037 res:2560x1440 hz:60 color_depth:8 enabled:true scaling:on origin:(-2560,-480) degree:0"
+displayplacer "id:2741FCF0-BF41-455C-32F9-2523FBC2D866 res:1536x960 hz:59 color_depth:4 enabled:true scaling:off origin:(0,0) degree:0" "id:4FF3CEF9-0FB7-51ED-3FE4-91CC9A79F037 res:2304x1296 hz:60 color_depth:8 enabled:true scaling:off origin:(-2304,-336) degree:0"
