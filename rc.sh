@@ -37,7 +37,7 @@ function __prompt_command {
   fi
   PS1+="\n\[\033[01;$((35+!$?))m\]>${RESTORE} "
 }
-PROMPT_DIRTRIM=3
+# PROMPT_DIRTRIM=3
 export PROMPT_COMMAND=__prompt_command
 
 # Aliases ---------------------------------------------------------------------
