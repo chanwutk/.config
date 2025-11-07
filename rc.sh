@@ -44,7 +44,7 @@ function __prompt_command {
   # PS1+="\n\[\033[01;$((35+!$?))m\]>${RESTORE} "
   PS1+=" \$ "
 }
-PROMPT_DIRTRIM=3
+# PROMPT_DIRTRIM=3
 export PROMPT_COMMAND=__prompt_command
 
 # Aliases ---------------------------------------------------------------------
@@ -77,6 +77,9 @@ dock() {
 }
 
 # fzf -------------------------------------------------------------------------
+if command -v fzf &> /dev/null; then
+  eval "$(fzf --bash)"
+fi
 if command -v fzf &> /dev/null; then
   [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
 fi

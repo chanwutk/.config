@@ -1,0 +1,1 @@
+displayplacer "id:CCE2113D-5B22-4635-303B-61454642BFFB res:2560x1440 color_depth:8 enabled:true scaling:on origin:(0,0) degree:0" "id:24D2904D-82AA-D3EB-E9C2-35BCF9194BC0 res:1920x1080 hz:75 color_depth:8 enabled:true scaling:off origin:(2560,0) degree:0"

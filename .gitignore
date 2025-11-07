@@ -17,3 +17,7 @@
 !zsh/plugins/zsh-autosuggestions
 !zsh/plugins/gitstatus
 !chanwutk.github.io
+!displayplacer/
+!displayplacer/*.sh
+!karabiner/
+!karabiner/karabiner.json
