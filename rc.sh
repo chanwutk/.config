@@ -1,6 +1,6 @@
 # Prompt ----------------------------------------------------------------------
 function __prompt_command {
-  # GREEN="\[\033[0;32m\]"
+  GREEN="\[\033[0;32m\]"
   BOLD_GREEN="\[\033[01;32m\]"
   CYAN="\[\033[0;36m\]"
   # RED="\[\033[0;31m\]"
@@ -23,19 +23,26 @@ function __prompt_command {
   # else
   #   BRANCH="(git not installed)"
   # fi
-  PS1="${BOLD_GREEN}\h ${RESTORE}\w"
-  if [ -n "$BRANCH" ]; then
-    PS1+=" ${CYAN}${BRANCH}"
-  fi
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]'
+  # PS1="${BOLD_GREEN}\h ${RESTORE}\w"
+  # if [ -n "$BRANCH" ]; then
+  #   PS1+=" ${CYAN}${BRANCH}${RESTORE}"
+  # fi
   # RET=$?
   # if [[ $RET != 0 ]]; then
   #   ERRMSG=" $RET"
     # PS1+="${RED}${ERRMSG}"
   # fi
-  if [ -n "$CONDA_DEFAULT_ENV" ]; then
-    PS1+=" ${PURPLE}($CONDA_DEFAULT_ENV)"
+  # if [ -n "$CONDA_DEFAULT_ENV" ]; then
+  #   PS1+=" ${PURPLE}($CONDA_DEFAULT_ENV)"
+  # fi
+  if [ -n "$CUDA_VISIBLE_DEVICES" ]; then
+      PS1+=" (cuda:${CUDA_VISIBLE_DEVICES})"
+  else
+      PS1+=" (cuda:all)"
   fi
-  PS1+="\n\[\033[01;$((35+!$?))m\]>${RESTORE} "
+  # PS1+="\n\[\033[01;$((35+!$?))m\]>${RESTORE} "
+  PS1+=" \$ "
 }
 PROMPT_DIRTRIM=3
 export PROMPT_COMMAND=__prompt_command
@@ -56,8 +63,23 @@ if command -v nvim &> /dev/null; then
   alias vim=nvim
 fi
 
+# Functions -------------------------------------------------------------------
+dock() {
+  local docker_name
+  if [ $# -eq 0 ]; then
+    # Use current directory name if no argument provided
+    docker_name=$(basename "$PWD")
+  else
+    # Use first argument if provided
+    docker_name="$1"
+  fi
+  docker exec -it "$docker_name" bash
+}
+
 # fzf -------------------------------------------------------------------------
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+if command -v fzf &> /dev/null; then
+  [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+fi
 
 # fnm -------------------------------------------------------------------------
 if which fnm &>/dev/null; then
