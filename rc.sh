@@ -1,4 +1,9 @@
 # Prompt ----------------------------------------------------------------------
+# Generate a color based on the hash of user@hostname
+__HOST_HASH=$(echo -n "$USER@$HOSTNAME" | md5sum 2>/dev/null || echo -n "$USER@$HOSTNAME" | md5)
+__HOST_COLOR_CODE=$((16#${__HOST_HASH:0:6} % 6 + 31))
+__HOST_COLOR="\[\033[01;${__HOST_COLOR_CODE}m\]"
+
 function __prompt_command {
   GREEN="\[\033[0;32m\]"
   BOLD_GREEN="\[\033[01;32m\]"
@@ -23,7 +28,8 @@ function __prompt_command {
   # else
   #   BRANCH="(git not installed)"
   # fi
-  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]'
+  
+  PS1='${debian_chroot:+($debian_chroot)}'"${__HOST_COLOR}"'\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]'
   # PS1="${BOLD_GREEN}\h ${RESTORE}\w"
   # if [ -n "$BRANCH" ]; then
   #   PS1+=" ${CYAN}${BRANCH}${RESTORE}"
