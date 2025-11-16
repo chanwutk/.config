@@ -79,8 +79,6 @@ dock() {
 # fzf -------------------------------------------------------------------------
 if command -v fzf &> /dev/null; then
   eval "$(fzf --bash)"
-fi
-if command -v fzf &> /dev/null; then
   [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
 fi
 
