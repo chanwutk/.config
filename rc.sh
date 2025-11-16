@@ -1,16 +1,9 @@
 # Prompt ----------------------------------------------------------------------
 # Generate a color based on the hash of user@hostname (using fast built-in bash hash)
 __HOST_HASH=$(( $(printf '%s' "$USER@$HOSTNAME" | cksum | cut -d' ' -f1) ))
-# Use 256-color mode with colors that work on both light and dark themes
-# Cyan/Blue range (37-51) and Yellow/Orange range (136-178) are good for both themes
-__HASH_MOD=$((__HOST_HASH % 2))
-if [ $__HASH_MOD -eq 0 ]; then
-  # Cyan/Blue range
-  __HOST_COLOR_CODE=$((37 + (__HOST_HASH % 15)))
-else
-  # Yellow/Orange range
-  __HOST_COLOR_CODE=$((136 + (__HOST_HASH % 43)))
-fi
+# Colors that work well on both light and dark themes
+__HOST_COLORS=(33 34 35 36 37 38 94 130 166 172)
+__HOST_COLOR_CODE=${__HOST_COLORS[$((__HOST_HASH % ${#__HOST_COLORS[@]}))]}
 __HOST_COLOR="\[\033[38;5;${__HOST_COLOR_CODE}m\]"
 
 function __prompt_command {
