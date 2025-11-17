@@ -1,10 +1,14 @@
 # Prompt ----------------------------------------------------------------------
 # Generate a color based on the hash of user@hostname (using fast built-in bash hash)
-__HOST_HASH=$(( $(printf '%s' "$USER@$HOSTNAME" | cksum | cut -d' ' -f1) ))
-# Colors that work well on both light and dark themes
-__HOST_COLORS=(33 34 35 36 37 38 94 130 166 172)
-__HOST_COLOR_CODE=${__HOST_COLORS[$((__HOST_HASH % ${#__HOST_COLORS[@]}))]}
-__HOST_COLOR="\[\033[38;5;${__HOST_COLOR_CODE}m\]"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  __HOST_COLOR=""
+else
+  __HOST_HASH=$(( $(printf '%s' "$USER@$HOSTNAME" | cksum | cut -d' ' -f1) ))
+  # Colors that work well on both light and dark themes
+  __HOST_COLORS=(33 34 35 36 37 38 94 130 166 172)
+  __HOST_COLOR_CODE=${__HOST_COLORS[$((__HOST_HASH % ${#__HOST_COLORS[@]}))]}
+  __HOST_COLOR="\[\033[38;5;${__HOST_COLOR_CODE}m\]"
+fi
 
 function __prompt_command {
   GREEN="\[\033[0;32m\]"
