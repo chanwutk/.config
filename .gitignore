@@ -8,6 +8,7 @@
 !tmux/tmux.conf
 !tmux/plugins
 !tmux/plugins/tpm
+!tmux/color_host.sh
 
 !profile.sh
 !rc.sh
