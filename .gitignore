@@ -4,6 +4,9 @@
 !npm
 !python
 
+!nvim
+!nvim/init.lua
+
 !tmux
 !tmux/tmux.conf
 !tmux/plugins

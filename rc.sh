@@ -71,9 +71,9 @@ fi
 alias ll='ls -lahF'
 alias sl='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
 alias vim='vim -i NONE'
-if command -v nvim &> /dev/null; then
-  alias vim=nvim
-fi
+# if command -v nvim &> /dev/null; then
+#   alias vim=nvim
+# fi
 
 # Functions -------------------------------------------------------------------
 dock() {
