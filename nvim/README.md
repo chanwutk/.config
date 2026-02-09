@@ -96,14 +96,19 @@ Highlights all references to the word under the cursor using LSP/treesitter.
 
 ## Disabled Snacks Sub-Features
 
-`folke/snacks.nvim` itself remains enabled (picker, input, gitbrowse, image, zen are all active).
+`folke/snacks.nvim` itself remains enabled (picker, input, gitbrowse, bigfile, quickfile, zen are active).
 
 | Feature | Role in AstroNvim | Lost keybindings | Notes |
 |---------|-------------------|------------------|-------|
 | `dashboard` | Startup home screen with quick-access keys (new file, find file, recents, last session) | `<Leader>h` opens dashboard | Neovim opens to an empty buffer instead. `<Leader>h` still triggers the dashboard — it just shows nothing useful. |
 | `indent` | Vertical indent guide lines (char `▏`) with buffer filtering | `<Leader>u\|` toggle indent guides | No visual indent guides. |
 | `scope` | Highlights the current code scope on the indent guide | None | Visual-only companion to indent. |
+| `image` | Inline image rendering in terminal (kitty graphics protocol) | None | AstroNvim configures it for `*.png`, `*.jpg`, `*.gif`, etc. Only works in image-capable terminals (kitty, wezterm). |
 | `notifier` | Floating notification popups replacing `vim.notify` with styled UI | `<Leader>uD` dismiss notifications (guarded — mapping not created when disabled) | Notifications fall back to `:messages`. `<Leader>fn` (find notifications) in picker still works for history. |
+| `scroll` | Smooth scrolling animation for `<C-D>`, `<C-U>`, `<C-F>`, `<C-B>` and similar scroll commands | None | Enabled by default in snacks.nvim. Adds visual animation overhead to every scroll action. Without it, scrolling is instant (native Neovim behavior). |
+| `statuscolumn` | Custom status column (sign column + line numbers + fold indicators) with click handlers | None | Enabled by default in snacks.nvim. Neovim's built-in `statuscolumn` provides the same visual output; this only adds mouse click handlers in the gutter. |
+| `words` | Highlights all references to the word under cursor using LSP, with `]]`/`[[` to jump between them | `]]`/`[[` next/prev LSP reference | Enabled by default in snacks.nvim. Functionally equivalent to the disabled `vim-illuminate` plugin. Queries LSP on cursor hold. Without it, LSP-based go-to-reference (`gr`) still works. |
+| `explorer` | File explorer sidebar using snacks picker (alternative to neo-tree) | None | Enabled by default in snacks.nvim. Not used by AstroNvim — neo-tree is the configured file explorer (`<Leader>e`). |
 
 ## Disabled AstroCore Feature
 
@@ -117,6 +122,8 @@ Highlights all references to the word under the cursor using LSP/treesitter.
 - **Snacks input** — `vim.ui.input()` / `vim.ui.select()` handler
 - **Snacks gitbrowse** — `<Leader>go`
 - **Snacks zen** — `<Leader>uZ`
+- **Snacks bigfile** — auto-disables expensive features (treesitter, LSP) for very large files
+- **Snacks quickfile** — renders files before lazy.nvim finishes loading for faster perceived open
 - **Neo-tree** — `<Leader>e` file explorer
 - **LSP** — mason, lspconfig, astrolsp, full language server support
 - **Treesitter** — syntax highlighting, text objects, incremental selection

@@ -64,7 +64,12 @@ require("lazy").setup({
       dashboard = { enabled = false },
       indent = { enabled = false },
       scope = { enabled = false },
+      image = { enabled = false },
       notifier = { enabled = false },
+      scroll = { enabled = false },  -- smooth scroll
+      statuscolumn = { enabled = false },
+      words = { enabled = false },  -- like vim-illuminate
+      explorer = { enabled = false },  -- already have neo-tree
     },
   },
 
