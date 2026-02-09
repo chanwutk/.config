@@ -39,7 +39,6 @@ require("lazy").setup({
   { "stevearc/aerial.nvim", enabled=false },
   { "max397574/better-escape.nvim", enabled=false },
   { "folke/todo-comments.nvim", enabled=false },
-  -- { "rebelot/heirline.nvim", enabled=false },
   { "windwp/nvim-ts-autotag", enabled=false },
   { "mrjones2014/smart-splits.nvim", enabled=false },
   { "rafamadriz/friendly-snippets", enabled=false },
@@ -48,7 +47,45 @@ require("lazy").setup({
   { "mfussenegger/nvim-dap", enabled=false },
   { "rcarriga/nvim-dap-ui", enabled=false },
   { "akinsho/toggleterm.nvim", enabled=false },
-  { "brenoprata10/nvim-highlight-colors", enabled=false },
+  { "jay-babu/mason-null-ls.nvim", enabled=false },
+  { "nvimtools/none-ls.nvim", enabled=false },
+  { "rcarriga/cmp-dap", enabled=false },
+  { "nvim-neotest/nvim-nio", enabled=false },
+  { "kevinhwang91/nvim-ufo", enabled=false },      -- fancy folding
+  { "NMAC427/guess-indent.nvim", enabled=false },  -- auto indent detection
+  { "brenoprata10/nvim-highlight-colors", enabled=false },  -- color swatches (show color next to color string like #ff0000 as red)
+  { "RRethy/vim-illuminate", enabled=false },     -- reference highlighting
+  -- { "rebelot/heirline.nvim", enabled=false },
+
+  -- Disable unused Snacks features
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = { enabled = false },
+      indent = { enabled = false },
+      scope = { enabled = false },
+      notifier = { enabled = false },
+    },
+  },
+
+  -- Disable notification popups
+  {
+    "AstroNvim/astrocore",
+    opts = {
+      features = {
+        notifications = false,
+      },
+    },
+  },
+
+  -- Override blink.cmp: use builtin snippets instead of disabled LuaSnip
+  {
+    "Saghen/blink.cmp",
+    opts = { snippets = { preset = "default" } },
+  },
+
+  -- Disable blink.compat (only used by disabled cmp-dap)
+  { "Saghen/blink.compat", enabled = false },
 
   -- 4. Change background color to black
   {
