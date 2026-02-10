@@ -5,6 +5,8 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.g.icons_enabled = false
+
 require("lazy").setup({
   -- 1. Keep AstroNvim core
   { "AstroNvim/AstroNvim", version = "^5", import = "astronvim.plugins" },
@@ -54,7 +56,7 @@ require("lazy").setup({
   { "kevinhwang91/nvim-ufo", enabled=false },      -- fancy folding
   { "NMAC427/guess-indent.nvim", enabled=false },  -- auto indent detection
   { "brenoprata10/nvim-highlight-colors", enabled=false },  -- color swatches (show color next to color string like #ff0000 as red)
-  { "RRethy/vim-illuminate", enabled=false },     -- reference highlighting
+  -- { "RRethy/vim-illuminate", enabled=false },     -- reference highlighting
   -- { "rebelot/heirline.nvim", enabled=false },
 
   -- Disable unused Snacks features
@@ -79,6 +81,11 @@ require("lazy").setup({
     opts = {
       features = {
         notifications = false,
+      },
+      options = {
+        opt = {
+          timeoutlen = 0,
+        },
       },
     },
   },
