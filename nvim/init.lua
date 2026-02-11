@@ -5,7 +5,7 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.icons_enabled = false
+vim.g.icons_enabled = os.getenv("icon") ~= "f"
 
 require("lazy").setup({
   -- 1. Keep AstroNvim core
