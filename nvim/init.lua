@@ -17,12 +17,12 @@ require("lazy").setup({
     dependencies = { "folke/snacks.nvim" },
     config = true,
     keys = {
-      { "<leader>a", nil, desc = "AI/Claude Code" },
+      { "<leader>a", nil, desc = "Claude Code" },
       { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
       { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
       { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
       { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-      { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+      -- { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
       { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
       { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
       {
@@ -34,6 +34,36 @@ require("lazy").setup({
       -- Diff management
       { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
       { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+    },
+  },
+  {
+    "chanwutk/cursor-cli.nvim",
+    name = "cursor-cli",
+    branch = "copilot/add-cursor-cli-functionality",
+    dependencies = { "folke/snacks.nvim" },
+    -- Note: config is optional - commands are auto-registered!
+    -- You can omit config entirely for defaults:
+    -- (no config needed)
+    
+    -- Or customize with config:
+    config = function()
+      require("cursor-cli").setup({
+        -- your custom config here
+      })
+    end,
+    
+    keys = {
+      { "<leader>c", nil, desc = "Cursor CLI" },
+      { "<leader>cc", "<cmd>CursorCLI<cr>", desc = "Focus Cursor" },
+      { "<leader>cC", "<cmd>CursorCLIClose<cr>", desc = "Close Cursor" },
+      { "<leader>cb", "<cmd>CursorCLIAdd %<cr>", desc = "Add current buffer" },
+      { "<leader>cs", "<cmd>CursorCLISend<cr>", mode = "v", desc = "Send to Cursor" },
+      {
+        "<leader>ct",
+        "<cmd>CursorCLITreeAdd<cr>",
+        desc = "Add from tree",
+        ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+      },
     },
   },
 
