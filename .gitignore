@@ -37,3 +37,8 @@
 !iterm/*
 !iterm/settings
 !iterm/settings/*
+
+!ghostty
+!ghostty/config
+!ghostty/config
+!ghostty/config/*.glsl
