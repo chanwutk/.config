@@ -14,5 +14,8 @@ else
     new_config=$(echo "$current_config" | sed 's/scaling:off/scaling:on/g')
 fi
 
+# Remove hz parameter from the configuration
+new_config=$(echo "$new_config" | sed 's/ hz:[^ ]*//g')
+
 # Apply the new configuration
 eval "$new_config"

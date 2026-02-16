@@ -70,6 +70,14 @@
                         "vendor_id": 12815
                     },
                     "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 4694,
+                        "vendor_id": 51984
+                    },
+                    "ignore": true
                 }
             ],
             "name": "Default profile",
