@@ -40,5 +40,5 @@
 
 !ghostty
 !ghostty/config
-!ghostty/config
-!ghostty/config/*.glsl
+!ghostty/shaders
+!ghostty/shaders/*.glsl
