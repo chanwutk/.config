@@ -41,3 +41,8 @@
 !zellij
 !zellij/*
 !zellij/config.kdl
+
+!ghostty
+!ghostty/config
+!ghostty/shaders
+!ghostty/shaders/*.glsl
