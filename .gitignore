@@ -37,3 +37,7 @@
 !iterm/*
 !iterm/settings
 !iterm/settings/*
+
+!zellij
+!zellij/*
+!zellij/config.kdl
