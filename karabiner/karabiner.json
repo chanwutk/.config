@@ -7,6 +7,68 @@
     },
     "profiles": [
         {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Type '/model opus' and press Enter",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "s" },
+                                "parameters": { "basic.to_delayed_action_delay_milliseconds": 100 },
+                                "to": [
+                                    { "key_code": "slash" },
+                                    { "key_code": "m" },
+                                    { "key_code": "o" },
+                                    { "key_code": "d" },
+                                    { "key_code": "e" },
+                                    { "key_code": "l" },
+                                    { "key_code": "spacebar" },
+                                    { "key_code": "s" },
+                                    { "key_code": "o" },
+                                    { "key_code": "n" },
+                                    { "key_code": "n" },
+                                    { "key_code": "e" },
+                                    { "key_code": "t" }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [],
+                                    "to_if_invoked": [{ "key_code": "return_or_enter" }]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Type '/model opus' and press Enter",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "o" },
+                                "parameters": { "basic.to_delayed_action_delay_milliseconds": 100 },
+                                "to": [
+                                    { "key_code": "slash" },
+                                    { "key_code": "m" },
+                                    { "key_code": "o" },
+                                    { "key_code": "d" },
+                                    { "key_code": "e" },
+                                    { "key_code": "l" },
+                                    { "key_code": "spacebar" },
+                                    { "key_code": "o" },
+                                    { "key_code": "p" },
+                                    { "key_code": "u" },
+                                    { "key_code": "s" }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [],
+                                    "to_if_invoked": [{ "key_code": "return_or_enter" }]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
             "devices": [
                 {
                     "identifiers": {
@@ -66,16 +128,16 @@
                 {
                     "identifiers": {
                         "is_keyboard": true,
-                        "product_id": 20616,
-                        "vendor_id": 12815
+                        "product_id": 4694,
+                        "vendor_id": 51984
                     },
                     "ignore": true
                 },
                 {
                     "identifiers": {
                         "is_keyboard": true,
-                        "product_id": 4694,
-                        "vendor_id": 51984
+                        "product_id": 20616,
+                        "vendor_id": 12815
                     },
                     "ignore": true
                 }
