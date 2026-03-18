@@ -39,7 +39,7 @@ require("lazy").setup({
   {
     "chanwutk/cursor-cli.nvim",
     name = "cursor-cli",
-    branch = "copilot/add-cursor-cli-functionality",
+    branch = "cursor-cli",
     dependencies = { "folke/snacks.nvim" },
     -- Note: config is optional - commands are auto-registered!
     -- You can omit config entirely for defaults:
