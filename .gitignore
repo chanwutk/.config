@@ -46,3 +46,7 @@
 !ghostty/config
 !ghostty/shaders
 !ghostty/shaders/*.glsl
+
+!kitty
+!kitty/kitty.conf
+!kitty/kitty.app.icns

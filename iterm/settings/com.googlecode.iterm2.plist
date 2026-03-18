@@ -23,9 +23,9 @@
 	<key>AiMaxTokens</key>
 	<integer>200000</integer>
 	<key>AiModel</key>
-	<string>claude-sonnet-4-5</string>
+	<string>claude-opus-4-6</string>
 	<key>AiResponseMaxTokens</key>
-	<integer>64000</integer>
+	<integer>128000</integer>
 	<key>AitermURL</key>
 	<string>https://api.anthropic.com/v1/messages</string>
 	<key>AllowClipboardAccess</key>
@@ -44,6 +44,10 @@
 	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>NeverWarnAboutShortLivedSessions_E538046C-0A79-44B5-9A25-9454B71B879A</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_E538046C-0A79-44B5-9A25-9454B71B879A_selection</key>
+	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
