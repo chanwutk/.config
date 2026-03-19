@@ -17,23 +17,23 @@ require("lazy").setup({
     dependencies = { "folke/snacks.nvim" },
     config = true,
     keys = {
-      { "<leader>a", nil, desc = "Claude Code" },
-      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-      -- { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      { "<leader>aa", nil, desc = "Claude Code" },
+      { "<leader>aac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      { "<leader>aaf", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+      { "<leader>aar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+      { "<leader>aaC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      -- { "<leader>aam", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+      { "<leader>aab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+      { "<leader>aas", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
       {
-        "<leader>as",
+        "<leader>aas",
         "<cmd>ClaudeCodeTreeAdd<cr>",
         desc = "Add file",
         ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
       },
       -- Diff management
-      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+      { "<leader>aaa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+      { "<leader>aad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
     },
   },
   {
@@ -53,15 +53,53 @@ require("lazy").setup({
     end,
     
     keys = {
-      { "<leader>c", nil, desc = "Cursor CLI" },
-      { "<leader>cc", "<cmd>CursorCLI<cr>", desc = "Focus Cursor" },
-      { "<leader>cC", "<cmd>CursorCLIClose<cr>", desc = "Close Cursor" },
-      { "<leader>cb", "<cmd>CursorCLIAdd %<cr>", desc = "Add current buffer" },
-      { "<leader>cs", "<cmd>CursorCLISend<cr>", mode = "v", desc = "Send to Cursor" },
+      { "<leader>ac", nil, desc = "Cursor CLI" },
+      { "<leader>acc", "<cmd>CursorCLI<cr>", desc = "Focus Cursor" },
+      { "<leader>acC", "<cmd>CursorCLIClose<cr>", desc = "Close Cursor" },
+      { "<leader>acb", "<cmd>CursorCLIAdd %<cr>", desc = "Add current buffer" },
+      { "<leader>acs", "<cmd>CursorCLISend<cr>", mode = "v", desc = "Send to Cursor" },
       {
-        "<leader>ct",
+        "<leader>act",
         "<cmd>CursorCLITreeAdd<cr>",
         desc = "Add from tree",
+        ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+      },
+    },
+  },
+
+  {
+    "chanwutk/coding-agents.nvim",
+    branch = "codex",
+    dependencies = { "folke/snacks.nvim" },
+    opts = {
+      terminal_cmd = "codex",
+      log_level = "info",
+      focus_after_send = true,
+      track_selection = false,
+      terminal = {
+        provider = "auto", -- "auto", "snacks", "native", "external", "none", or custom table
+        split_side = "right",
+        split_width_percentage = 0.30,
+      },
+    },
+    config = function(_, opts)
+      vim.g.codex_user_config = opts
+      require("codex").setup(opts)
+    end,
+    keys = {
+      { "<leader>ao", nil, desc = "AI / Codex" },
+      -- Terminal
+      { "<leader>aoc", "<cmd>Codex<cr>", desc = "Toggle / focus Codex terminal" },
+      { "<leader>aoo", "<cmd>CodexOpen<cr>", desc = "Open Codex terminal" },
+      { "<leader>aox", "<cmd>CodexClose<cr>", desc = "Close Codex terminal" },
+      { "<leader>aof", "<cmd>CodexFocus<cr>", desc = "Focus / toggle Codex terminal" },
+      -- Context (@path and selection)
+      { "<leader>aob", "<cmd>CodexAdd %<cr>", desc = "Add current buffer path to Codex" },
+      { "<leader>aos", "<cmd>CodexSend<cr>", mode = "v", desc = "Send visual selection" },
+      {
+        "<leader>aos",
+        "<cmd>CodexTreeAdd<cr>",
+        desc = "Add selected path from file tree",
         ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
       },
     },
