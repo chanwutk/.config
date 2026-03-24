@@ -50,3 +50,6 @@
 !kitty
 !kitty/kitty.conf
 !kitty/kitty.app.icns
+
+!opencode/
+!opencode/opencode.json

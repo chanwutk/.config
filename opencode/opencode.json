@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "vllm-kimi-think": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "vLLM Kimi Think",
+      "options": {
+        "baseURL": "http://127.0.0.1:{env:VLLM_PORT_0}/v1",
+        "apiKey": "{env:VLLM_API_KEY}"
+      },
+      "models": {
+        "kimi-k25-think": {
+          "name": "Kimi K2.5 Think",
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          }
+        }
+      }
+    }
+  },
+  "model": "vllm-kimi-think/kimi-k25-think"
+}
