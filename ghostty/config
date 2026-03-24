@@ -48,7 +48,12 @@
 window-width = 160
 window-height = 48
 
-theme = dark:iTerm2 Dark Background,light:iTerm2 Light Background
+# theme = dark:iTerm2 Dark Background,light:iTerm2 Light Background
+# theme = iTerm2 Dark Background
+# theme = Gruvbox Light Hard
+# theme = iTerm2 Light Background
+# theme = catppuccin-latte.conf
+theme = iTerm2 Tango Dark
 font-family = JetBrainsMonoNL Nerd Font Mono
 
 window-padding-balance = true

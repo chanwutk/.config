@@ -88,6 +88,22 @@ dock() {
   docker exec -it "$docker_name" bash
 }
 
+opencode() {
+  # Loop over each port in the configured forwarding range
+  for port in $(seq $VLLM_PORT_START $VLLM_PORT_END); do
+    # Check if an SSH tunnel for this specific port to the VLLM host is already running
+    if ! pgrep -f "ssh.*-L $port:localhost:$port.*$VLLM_HOST" &>/dev/null; then
+      echo "Forwarding port $port -> $VLLM_HOST:$port"
+      # Start the tunnel for this port in the background (-N: no remote command, -L: local port forwarding)
+      ssh -N -L $port:localhost:$port chanwutk@$VLLM_HOST &
+    else
+      echo "Port $port already forwarded to $VLLM_HOST:$port"
+    fi
+  done
+  # Run the real opencode binary (command builtin bypasses this function to avoid recursion)
+  command opencode "$@"
+}
+
 # fzf -------------------------------------------------------------------------
 if command -v fzf &> /dev/null; then
   eval "$(fzf --bash)"
