@@ -59,6 +59,12 @@ function __prompt_command {
 # PROMPT_DIRTRIM=3
 export PROMPT_COMMAND=__prompt_command
 
+# Cargo -----------------------------------------------------------------------
+export RUSTUP_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/rustup"
+export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
+. "$CARGO_HOME/env"
+
+
 # Aliases ---------------------------------------------------------------------
 if command -v eza &> /dev/null; then
   alias ls=eza
