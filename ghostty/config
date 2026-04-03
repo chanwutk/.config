@@ -69,3 +69,6 @@ macos-titlebar-proxy-icon = hidden
 
 # custom-shader = ./shaders/cursor_smear.glsl
 # custom-shader = ./shaders/cursor_smear_equal.glsl
+# macos-titlebar-style = hidden
+# gtk-titlebar = false
+macos-titlebar-style = tabs
