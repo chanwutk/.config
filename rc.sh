@@ -10,8 +10,7 @@ else
   __HOST_COLOR="\[\033[38;5;${__HOST_COLOR_CODE}m\]"
 fi
 
-function __prompt_command {
-  GREEN="\[\033[0;32m\]"
+function __prompt_command { GREEN="\[\033[0;32m\]"
   BOLD_GREEN="\[\033[01;32m\]"
   CYAN="\[\033[0;36m\]"
   # RED="\[\033[0;31m\]"

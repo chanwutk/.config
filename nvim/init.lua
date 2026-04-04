@@ -12,6 +12,7 @@ require("lazy").setup({
   { "AstroNvim/AstroNvim", version = "^5", import = "astronvim.plugins" },
 
   -- 2. Add your custom plugin snippet here
+  { "github/copilot.vim" },
   {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
