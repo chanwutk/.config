@@ -58,6 +58,12 @@ function __prompt_command { GREEN="\[\033[0;32m\]"
 # PROMPT_DIRTRIM=3
 export PROMPT_COMMAND=__prompt_command
 
+# Cargo -----------------------------------------------------------------------
+export RUSTUP_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/rustup"
+export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
+. "$CARGO_HOME/env"
+
+
 # Aliases ---------------------------------------------------------------------
 if command -v eza &> /dev/null; then
   alias ls=eza
@@ -101,6 +107,29 @@ opencode() {
   done
   # Run the real opencode binary (command builtin bypasses this function to avoid recursion)
   command opencode "$@"
+}
+
+claude_local() {
+  local port=$VLLM_PORT_0
+  # Check if an SSH tunnel for this specific port to the VLLM host is already running
+  if ! pgrep -f "ssh.*-L $port:localhost:$port.*$VLLM_HOST" &>/dev/null; then
+    echo "Forwarding port $port -> $VLLM_HOST:$port"
+    # Start the tunnel for this port in the background (-N: no remote command, -L: local port forwarding)
+    ssh -N -L $port:localhost:$port chanwutk@$VLLM_HOST &
+  else
+    echo "Port $port already forwarded to $VLLM_HOST:$port"
+  fi
+
+  # Set environment variables for Claude Code to use local vLLM
+  # Requires: VLLM_LOCAL_URL (default: http://localhost:8000) and VLLM_MODEL env vars
+  ANTHROPIC_BASE_URL=${VLLM_LOCAL_URL:-http://localhost:$port} \
+  ANTHROPIC_API_KEY=${VLLM_API_KEY:-dummy} \
+  ANTHROPIC_AUTH_TOKEN=${VLLM_API_KEY:-dummy} \
+  ANTHROPIC_DEFAULT_OPUS_MODEL=${VLLM_MODEL:-kimi-k25-think} \
+  ANTHROPIC_DEFAULT_SONNET_MODEL=${VLLM_MODEL:-kimi-k25-think} \
+  ANTHROPIC_DEFAULT_HAIKU_MODEL=${VLLM_MODEL:-kimi-k25-think} \
+  CLAUDE_CODE_ATTRIBUTION_HEADER=0 \
+  command claude "$@"
 }
 
 # fzf -------------------------------------------------------------------------
