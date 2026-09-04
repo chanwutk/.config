@@ -1,0 +1,52 @@
+" Syntax and file types
+syntax enable
+filetype plugin indent on
+set background=dark
+" colorscheme habamax
+colorscheme wildcharm
+
+" Display
+set number
+set relativenumber
+set cursorline
+set showmatch
+set laststatus=2
+set ruler
+set showcmd
+set colorcolumn=80
+set termguicolors
+
+" Editing
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set backspace=indent,eol,start
+
+" Searching
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" Navigation and windows
+set scrolloff=5
+set sidescrolloff=5
+set splitbelow
+set splitright
+set wildmenu
+set wildmode=longest:full,full
+set mouse=a
+
+" Use the macOS clipboard
+set clipboard=unnamed
+
+" Sensible file handling
+set encoding=utf-8
+set hidden
+set confirm
+set autoread
+
+" Keep Vim state out of the home directory
+set viminfofile=$XDG_STATE_HOME/vim/viminfo

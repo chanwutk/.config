@@ -51,7 +51,9 @@ export AUTOENV_ENABLE_LEAVE="t"
 export TERMINFO="$XDG_DATA_HOME"/terminfo                                                                         
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 # wget
-alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+# vim
+export VIMINIT='source $XDG_CONFIG_HOME/vim/vimrc'
 # yarn
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 # bitmonero
