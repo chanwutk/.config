@@ -9,10 +9,10 @@ vim.g.icons_enabled = os.getenv("icon") ~= "f"
 
 require("lazy").setup({
   -- 1. Keep AstroNvim core
-  { "AstroNvim/AstroNvim", version = "^5", import = "astronvim.plugins" },
+  { "AstroNvim/AstroNvim", version = "^6", import = "astronvim.plugins" },
 
   -- 2. Add your custom plugin snippet here
-  { "github/copilot.vim" },
+  -- { "github/copilot.vim" },
   {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
@@ -37,74 +37,74 @@ require("lazy").setup({
       { "<leader>aad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
     },
   },
-  {
-    "chanwutk/cursor-cli.nvim",
-    name = "cursor-cli",
-    branch = "cursor-cli",
-    dependencies = { "folke/snacks.nvim" },
-    -- Note: config is optional - commands are auto-registered!
-    -- You can omit config entirely for defaults:
-    -- (no config needed)
-    
-    -- Or customize with config:
-    config = function()
-      require("cursor-cli").setup({
-        -- your custom config here
-      })
-    end,
-    
-    keys = {
-      { "<leader>ac", nil, desc = "Cursor CLI" },
-      { "<leader>acc", "<cmd>CursorCLI<cr>", desc = "Focus Cursor" },
-      { "<leader>acC", "<cmd>CursorCLIClose<cr>", desc = "Close Cursor" },
-      { "<leader>acb", "<cmd>CursorCLIAdd %<cr>", desc = "Add current buffer" },
-      { "<leader>acs", "<cmd>CursorCLISend<cr>", mode = "v", desc = "Send to Cursor" },
-      {
-        "<leader>act",
-        "<cmd>CursorCLITreeAdd<cr>",
-        desc = "Add from tree",
-        ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
-      },
-    },
-  },
-
-  {
-    "chanwutk/coding-agents.nvim",
-    branch = "codex",
-    dependencies = { "folke/snacks.nvim" },
-    opts = {
-      terminal_cmd = "codex",
-      log_level = "info",
-      focus_after_send = true,
-      track_selection = false,
-      terminal = {
-        provider = "auto", -- "auto", "snacks", "native", "external", "none", or custom table
-        split_side = "right",
-        split_width_percentage = 0.30,
-      },
-    },
-    config = function(_, opts)
-      vim.g.codex_user_config = opts
-      require("codex").setup(opts)
-    end,
-    keys = {
-      { "<leader>ao", nil, desc = "AI / Codex" },
-      -- Terminal
-      { "<leader>aoc", "<cmd>Codex<cr>", desc = "Toggle / focus Codex terminal" },
-      { "<leader>aoo", "<cmd>CodexOpen<cr>", desc = "Open Codex terminal" },
-      { "<leader>aox", "<cmd>CodexClose<cr>", desc = "Close Codex terminal" },
-      { "<leader>aof", "<cmd>CodexFocus<cr>", desc = "Focus / toggle Codex terminal" },
-      -- Context (@path and selection)
-      { "<leader>aob", "<cmd>CodexAdd %<cr>", desc = "Add current buffer path to Codex" },
-      { "<leader>aos", "<cmd>CodexSend<cr>", mode = "v", desc = "Send visual selection" },
-      {
-        "<leader>aos",
-        "<cmd>CodexTreeAdd<cr>",
-        desc = "Add selected path from file tree",
-        ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
-      },
-    },
-  },
+  -- {
+  --   "chanwutk/cursor-cli.nvim",
+  --   name = "cursor-cli",
+  --   branch = "cursor-cli",
+  --   dependencies = { "folke/snacks.nvim" },
+  --   -- Note: config is optional - commands are auto-registered!
+  --   -- You can omit config entirely for defaults:
+  --   -- (no config needed)
+  --
+  --   -- Or customize with config:
+  --   config = function()
+  --     require("cursor-cli").setup({
+  --       -- your custom config here
+  --     })
+  --   end,
+  --
+  --   keys = {
+  --     { "<leader>ac", nil, desc = "Cursor CLI" },
+  --     { "<leader>acc", "<cmd>CursorCLI<cr>", desc = "Focus Cursor" },
+  --     { "<leader>acC", "<cmd>CursorCLIClose<cr>", desc = "Close Cursor" },
+  --     { "<leader>acb", "<cmd>CursorCLIAdd %<cr>", desc = "Add current buffer" },
+  --     { "<leader>acs", "<cmd>CursorCLISend<cr>", mode = "v", desc = "Send to Cursor" },
+  --     {
+  --       "<leader>act",
+  --       "<cmd>CursorCLITreeAdd<cr>",
+  --       desc = "Add from tree",
+  --       ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+  --     },
+  --   },
+  -- },
+  --
+  -- {
+  --   "chanwutk/coding-agents.nvim",
+  --   branch = "codex",
+  --   dependencies = { "folke/snacks.nvim" },
+  --   opts = {
+  --     terminal_cmd = "codex",
+  --     log_level = "info",
+  --     focus_after_send = true,
+  --     track_selection = false,
+  --     terminal = {
+  --       provider = "auto", -- "auto", "snacks", "native", "external", "none", or custom table
+  --       split_side = "right",
+  --       split_width_percentage = 0.30,
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     vim.g.codex_user_config = opts
+  --     require("codex").setup(opts)
+  --   end,
+  --   keys = {
+  --     { "<leader>ao", nil, desc = "AI / Codex" },
+  --     -- Terminal
+  --     { "<leader>aoc", "<cmd>Codex<cr>", desc = "Toggle / focus Codex terminal" },
+  --     { "<leader>aoo", "<cmd>CodexOpen<cr>", desc = "Open Codex terminal" },
+  --     { "<leader>aox", "<cmd>CodexClose<cr>", desc = "Close Codex terminal" },
+  --     { "<leader>aof", "<cmd>CodexFocus<cr>", desc = "Focus / toggle Codex terminal" },
+  --     -- Context (@path and selection)
+  --     { "<leader>aob", "<cmd>CodexAdd %<cr>", desc = "Add current buffer path to Codex" },
+  --     { "<leader>aos", "<cmd>CodexSend<cr>", mode = "v", desc = "Send visual selection" },
+  --     {
+  --       "<leader>aos",
+  --       "<cmd>CodexTreeAdd<cr>",
+  --       desc = "Add selected path from file tree",
+  --       ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+  --     },
+  --   },
+  -- },
 
   -- 3. Disabled plugins
   { "stevearc/aerial.nvim", enabled=false },

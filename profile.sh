@@ -48,7 +48,7 @@ export AUTOENV_AUTH_FILE="$XDG_STATE_HOME"/autoenv/authorized_list
 export AUTOENV_NOTAUTH_FILE="$XDG_STATE_HOME"/autoenv/not_authorized_list
 export AUTOENV_ENABLE_LEAVE="t"
 # terminfo
-export TERMINFO="$XDG_DATA_HOME"/terminfo                                                                         
+export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 # wget
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
@@ -59,8 +59,9 @@ alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 # bitmonero
 alias monerod="monerod --data-dir $XDG_DATA_HOME/bitmonero"
 
-# Term Color ------------------------------------------------------------------
-export TERM="xterm-256color"
+# TERM is owned by the outer terminal and by tmux inside tmux panes. Forcing it
+# here hides the actual terminal capabilities and can corrupt full-screen TUIs.
+export TERM=screen-256color
 
 # Local Binaries --------------------------------------------------------------
 export PATH=$HOME/.local/bin:$PATH
@@ -82,4 +83,4 @@ export LDFLAGS=-L${LIB_PATH}/lib
 # export LC_ALL="en_US.UTF-8"
 
 # Claude ----------------------------------------------------------------------
-export CLAUDE_CODE_NO_FLICKER=1
+# export CLAUDE_CODE_NO_FLICKER=1
