@@ -59,3 +59,6 @@
 
 !opencode/
 !opencode/opencode.json
+
+!claude/
+!claude/statusline-command.sh

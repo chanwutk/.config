@@ -54,7 +54,8 @@ window-height = 48
 # theme = iTerm2 Light Background
 # theme = catppuccin-latte.conf
 theme = iTerm2 Tango Dark
-font-family = JetBrainsMonoNL Nerd Font Mono
+# theme = Kitty Default
+# font-family = JetBrainsMonoNL Nerd Font Mono
 
 window-padding-balance = true
 unfocused-split-opacity = 0.50
