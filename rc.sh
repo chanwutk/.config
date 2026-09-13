@@ -2,11 +2,11 @@
 if [ -n "${ZSH_VERSION:-}" ]; then
   setopt PROMPT_SUBST
   PROMPT='%n@%m:%F{blue}%~%f %# '
-elif [ -n "${BASH_VERSION:-}" ]; then
-  __prompt_command() {
-    PS1='\u@\h:\[\033[01;34m\]\w\[\033[00m\]'
-  }
-  PROMPT_COMMAND=__prompt_command
+# elif [ -n "${BASH_VERSION:-}" ]; then
+#   __prompt_command() {
+#     PS1='\u@\h:\[\033[01;34m\]\w\[\033[00m\] '
+#   }
+#   PROMPT_COMMAND=__prompt_command
 fi
 
 # Cargo -----------------------------------------------------------------------
