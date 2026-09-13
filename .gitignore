@@ -8,6 +8,9 @@
 !nvim/init.lua
 !nvim/README.md
 
+!vim
+!vim/vimrc
+
 !tmux
 !tmux/tmux.conf
 !tmux/plugins

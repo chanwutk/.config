@@ -9,7 +9,7 @@ vim.g.icons_enabled = os.getenv("icon") ~= "f"
 
 require("lazy").setup({
   -- 1. Keep AstroNvim core
-  { "AstroNvim/AstroNvim", version = "^5", import = "astronvim.plugins" },
+  { "AstroNvim/AstroNvim", version = "^6", import = "astronvim.plugins" },
 
   -- 2. Add your custom plugin snippet here
   { "github/copilot.vim" },
