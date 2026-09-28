@@ -1,15 +1,29 @@
+set nocompatible
+
+" Keep installed plugins and generated files in XDG directories.
+let s:data_dir = has('nvim') ? stdpath('data')
+      \ : (empty($XDG_DATA_HOME) ? expand('~/.local/share') : $XDG_DATA_HOME) . '/vim'
+let s:state_dir = (empty($XDG_STATE_HOME) ? expand('~/.local/state') : $XDG_STATE_HOME)
+      \ . (has('nvim') ? '/nvim' : '/vim')
+let s:cache_dir = has('nvim') ? stdpath('cache')
+      \ : (empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME) . '/vim'
+let s:site_dir = has('nvim') ? s:data_dir . '/site' : s:data_dir
+if !has('nvim')
+  let &runtimepath = escape(s:site_dir, ',') . ',' . &runtimepath
+        \ . ',' . escape(s:site_dir . '/after', ',')
+endif
+
 " ---------------------------------------------------------------------------
 " Bootstrap vim-plug
 " ---------------------------------------------------------------------------
-let s:plug_path = has('nvim') ? stdpath('data') . '/site/autoload/plug.vim'
-      \ : '~/.vim/autoload/plug.vim'
+let s:plug_path = s:site_dir . '/autoload/plug.vim'
 if empty(glob(s:plug_path))
-  silent execute '!curl -fLo ' . s:plug_path . ' --create-dirs
+  silent execute '!curl -fLo ' . shellescape(s:plug_path) . ' --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin(s:data_dir . '/plugged')
 
 " Sensible starting defaults so this file can focus on preferences
 Plug 'tpope/vim-sensible'
@@ -25,7 +39,7 @@ Plug 'tpope/vim-fugitive'        " :G status/blame/diff
 Plug 'airblade/vim-gitgutter'    " +/-/~ signs in the gutter
 
 " Fuzzy finding (project already has fzf installed, just add the vim glue)
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 " Status line + colorscheme
@@ -37,7 +51,6 @@ call plug#end()
 " ---------------------------------------------------------------------------
 " General
 " ---------------------------------------------------------------------------
-set nocompatible
 filetype plugin indent on
 syntax on
 
@@ -51,16 +64,14 @@ set clipboard=unnamedplus   " share the system clipboard by default
 
 " Persistent undo across sessions
 set undofile
-set undodir=~/.vim/undodir
-if !isdirectory(&undodir)
-  call mkdir(&undodir, 'p')
-endif
-
-" Keep swap/backup files out of the way instead of littering cwd
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-if !isdirectory(&backupdir) | call mkdir(&backupdir, 'p') | endif
-if !isdirectory(&directory) | call mkdir(&directory, 'p') | endif
+let &undodir = escape(s:state_dir . '/undo', ' ,')
+let &backupdir = escape(s:state_dir . '/backup//', ' ,')
+let &directory = escape(s:cache_dir . '/swap//', ' ,')
+for s:dir in [s:state_dir . '/undo', s:state_dir . '/backup', s:cache_dir . '/swap']
+  if !isdirectory(s:dir)
+    call mkdir(s:dir, 'p', 0700)
+  endif
+endfor
 
 " ---------------------------------------------------------------------------
 " UI
